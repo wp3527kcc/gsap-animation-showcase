@@ -1,24 +1,58 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+import BasicAnimations from "@/components/BasicAnimations";
+import StaggerAnimations from "@/components/StaggerAnimations";
+import TimelineAnimations from "@/components/TimelineAnimations";
+import ScrollTriggerAnimations from "@/components/ScrollTriggerAnimations";
+import { useState } from "react";
 
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
- */
 export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+  const [activeTab, setActiveTab] = useState<
+    "basic" | "timeline" | "stagger" | "scroll"
+  >("basic");
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+      {/* Header */}
+      <header className="sticky top-0 z-50 bg-white shadow-sm border-b">
+        <div className="container py-6">
+          <h1 className="text-3xl font-bold text-gray-900">GSAP React Demo</h1>
+          <p className="text-gray-600 mt-2">
+            使用 Vite + React + GSAP 构建的动画演示项目
+          </p>
+        </div>
+      </header>
+
+      {/* Navigation Tabs */}
+      <div className="bg-white border-b sticky top-16 z-40">
+        <div className="container">
+          <div className="flex gap-0 overflow-x-auto">
+            {[
+              { id: "basic", label: "基础动画" },
+              { id: "timeline", label: "时间轴" },
+              { id: "stagger", label: "交错动画" },
+              { id: "scroll", label: "滚动触发" },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id as any)}
+                className={`px-6 py-4 font-medium border-b-2 transition-colors whitespace-nowrap ${
+                  activeTab === tab.id
+                    ? "border-blue-500 text-blue-600"
+                    : "border-transparent text-gray-600 hover:text-gray-900"
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <main className="container py-12">
+        {activeTab === "basic" && <BasicAnimations />}
+        {activeTab === "timeline" && <TimelineAnimations />}
+        {activeTab === "stagger" && <StaggerAnimations />}
+        {activeTab === "scroll" && <ScrollTriggerAnimations />}
       </main>
     </div>
   );
