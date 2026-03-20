@@ -36,7 +36,7 @@ export default function BasicAnimations() {
         {
           scale: 1,
           rotation: 0,
-          duration: 1.8,
+          duration: 3.8,
           ease: "elastic.out(1, 0.3)",
           delay: 1.5,
         }
@@ -84,9 +84,9 @@ export default function BasicAnimations() {
   return (
     <div ref={containerRef} className="space-y-8">
       <div>
-        <h2 className="text-2xl font-bold mb-6">基础动画示例</h2>
+        <h2 className="text-2xl font-bold mb-12">基础动画示例</h2>
 
-        <div className="flex gap-8 mb-8 flex-wrap">
+        <div className="flex gap-40 mb-8 flex-wrap">
           {/* gsap.to() 示例 */}
           <div className="flex flex-col items-center gap-4">
             <div
