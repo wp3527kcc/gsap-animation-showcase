@@ -13,11 +13,19 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white shadow-sm border-b">
-        <div className="container py-6">
-          <h1 className="text-3xl font-bold text-gray-900">GSAP React Demo</h1>
-          <p className="text-gray-600 mt-2">
-            使用 Vite + React + GSAP 构建的动画演示项目
-          </p>
+        <div className="container py-6 flex justify-between items-start">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">GSAP React Demo</h1>
+            <p className="text-gray-600 mt-2">
+              使用 Vite + React + GSAP 构建的动画演示项目
+            </p>
+          </div>
+          <a
+            href="/tetris"
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
+          >
+            俄罗斯方块
+          </a>
         </div>
       </header>
 
